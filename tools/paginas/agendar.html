@@ -1,0 +1,73 @@
+<!-- titulo: Agendar · Caverna Hair e Makeup -->
+<!-- desc: Peça seu horário com a Andréia Oliveira: loiros, iluminação, corte, escova, maquiagem, penteado e dia de noiva, no estúdio ou em domicílio. -->
+---
+<section class="secao topo-pag" aria-labelledby="t-ag">
+  <div class="wrap">
+    <div class="cab centro">
+      <p class="rot">Agenda aberta</p>
+      <h1 id="t-ag">Agendar horário</h1>
+      <p class="lead">Preencha o que souber. A mensagem é montada aqui e abre pronta no WhatsApp da Andréia, que responde com os horários livres.</p>
+    </div>
+    <form class="form" data-agendar novalidate>
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="given-name" required>
+      </div>
+      <fieldset class="campo">
+        <legend>Serviço</legend>
+        <div class="opcoes">
+          <label><input type="radio" name="servico" value="Loiro ou mechas" data-cabelo required><span>Loiro ou mechas</span></label>
+          <label><input type="radio" name="servico" value="Iluminação sem descolorir" data-cabelo><span>Iluminação sem descolorir</span></label>
+          <label><input type="radio" name="servico" value="Corte" data-cabelo><span>Corte</span></label>
+          <label><input type="radio" name="servico" value="Coloração ou retoque de raiz" data-cabelo><span>Cor ou raiz</span></label>
+          <label><input type="radio" name="servico" value="Escova orgânica ou tratamento" data-cabelo data-s="escova"><span>Escova ou tratamento</span></label>
+          <label><input type="radio" name="servico" value="Maquiagem" data-s="make"><span>Maquiagem</span></label>
+          <label><input type="radio" name="servico" value="Maquiagem e penteado" data-s="penteado"><span>Make e penteado</span></label>
+          <label><input type="radio" name="servico" value="Dia de noiva" data-s="noiva"><span>Dia de noiva</span></label>
+          <label><input type="radio" name="servico" value="Aula de automaquiagem" data-s="aula"><span>Aula de automaquiagem</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="campo" data-so-cabelo>
+        <legend>Seu cabelo hoje</legend>
+        <div class="opcoes">
+          <label><input type="radio" name="quimica" value="Cabelo natural, sem química"><span>Natural</span></label>
+          <label><input type="radio" name="quimica" value="Tem coloração"><span>Com coloração</span></label>
+          <label><input type="radio" name="quimica" value="Tem descoloração ou mechas"><span>Com descoloração</span></label>
+          <label><input type="radio" name="quimica" value="Tem progressiva ou alisamento"><span>Com progressiva</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="campo">
+        <legend>Onde</legend>
+        <div class="opcoes">
+          <label><input type="radio" name="local" value="No estúdio"><span>No estúdio</span></label>
+          <label><input type="radio" name="local" value="Em domicílio"><span>Em domicílio</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="campo">
+        <legend>Melhor período</legend>
+        <div class="opcoes">
+          <label><input type="checkbox" name="periodo" value="manhã"><span>Manhã</span></label>
+          <label><input type="checkbox" name="periodo" value="tarde"><span>Tarde</span></label>
+          <label><input type="checkbox" name="periodo" value="noite"><span>Noite</span></label>
+        </div>
+      </fieldset>
+      <div class="campo">
+        <label for="dia">Dia de preferência ou data do evento</label>
+        <input type="text" id="dia" name="dia" placeholder="Ex.: sábado, dia 18, casamento em 12/12">
+      </div>
+      <div class="campo">
+        <label for="obs">Observações</label>
+        <textarea id="obs" name="obs" placeholder="O resultado que você quer, se é o seu bairro para domicílio, quantas pessoas na produção..."></textarea>
+      </div>
+      <div class="campo">
+        <span class="campo-rot">Prévia da mensagem</span>
+        <div class="previa" aria-live="polite"></div>
+      </div>
+      <div class="envio">
+        <button class="btn" type="submit"><span>Enviar no WhatsApp</span><i><!--seta--></i></button>
+        <p class="nota">Tem foto de referência? Mande no WhatsApp junto com a mensagem.</p>
+      </div>
+      <p class="nota">Prefere escrever do seu jeito? <a href="<!--zap-->" target="_blank" rel="noopener">Chame direto no WhatsApp</a>.</p>
+    </form>
+  </div>
+</section>
