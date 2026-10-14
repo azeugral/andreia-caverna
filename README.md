@@ -4,15 +4,18 @@ Site da Andréia Oliveira ([@andreiacaverna_hairemakeup](https://www.instagram.c
 
 Prévia: https://azeugral.github.io/andreia-caverna/ (com `noindex` até ter domínio).
 
-## Identidade (v1, 14/10/2026)
+## Identidade (v2, 14/10/2026)
 
-Tirada do logo oficial dela (post "Ótimo início de semana", `../_ref/ig/078.webp`).
+A v1 (preto chapado, capitulares romanas em Cinzel, moldura dourada nos botões) ficou com cara de barbearia. A v2 segue as referências de estúdios de cabelo e maquiagem "soft luxury": base clara, o dourado como champanhe só nos acentos e fotos em arco.
 
-- **Cores:** preto `#0d0c0b`, ouro `#c9a35c` (claro `#e4c88f`) e marfim `#f1ebe1`.
-- **Fontes:** Cinzel nos títulos (as mesmas capitulares romanas do "CAVERNA") e IBM Plex Sans no texto.
-- **Logo:** recortado do post 078 e convertido para fundo transparente por `tools/processar.py`. O favicon é o emblema (coroa + C).
-- **Layout:** logo centralizado no topo, barra de menu fixa embaixo dele (o logo pequeno aparece na barra ao rolar), seções simétricas.
-- **Botões:** retos, com moldura dupla, como o anel em volta do C. No hover, o ouro claro entra pela esquerda.
+- **Cores:** marfim `#faf6f0`, nude `#f1e4da`, champanhe `#8c6a42` (o dourado do logo escurecido para ler no claro), rosé `#c99a87` nos detalhes e cacau `#2b211d` no texto, na faixa final e no rodapé.
+- **Fontes:** Cormorant Garamond nos títulos e Jost no texto.
+- **Logo:** o oficial, recortado do post 078 (`../_ref/ig/078.webp`). O `tools/processar.py` gera:
+  - `logo-h-*`: versão horizontal (emblema + "CAVERNA / HAIR E MAKEUP") para o cabeçalho, em champanhe;
+  - `logo-ouro-*`: o logo completo no dourado original, para o rodapé cacau;
+  - favicon com o emblema champanhe sobre nude.
+- **Cabeçalho:** o logo horizontal à esquerda e o menu à direita a partir de 1100 px. Abaixo disso aparecem o botão Agendar e uma gaveta de menu. Abaixo de 480 px, o "Menu" vira só ícone para tudo caber. O botão flutuante saiu, porque cobria os cards no celular.
+- **Botões:** retos, cacau. No hover, o champanhe sobe de baixo.
 
 ## Estrutura
 

@@ -12,34 +12,30 @@ window.CONFIG = {
   requestAnimationFrame(function () { setTimeout(function () { doc.classList.add('pronto'); }, 60); });
   document.querySelectorAll('[data-ano]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* menu (celular) */
-  var barra = document.querySelector('.barra');
-  var abrir = document.querySelector('.barra-abrir');
-  var menu = document.querySelector('.menu');
-  if (abrir && menu) {
+  /* gaveta do menu (celular) */
+  var nav = document.querySelector('.nav');
+  var abrir = document.querySelector('.nav-abrir');
+  var gaveta = document.querySelector('.nav-menu');
+  if (abrir && gaveta) {
     function alternar(a) {
       abrir.setAttribute('aria-expanded', a);
       abrir.querySelector('span').textContent = a ? 'Fechar' : 'Menu';
-      menu.classList.toggle('aberto', a);
-      barra.classList.toggle('menu-aberto', a);
+      gaveta.classList.toggle('aberta', a);
+      nav.classList.toggle('menu-aberto', a);
       document.body.style.overflow = a ? 'hidden' : '';
     }
     abrir.addEventListener('click', function () { alternar(abrir.getAttribute('aria-expanded') !== 'true'); });
-    menu.addEventListener('click', function (e) { if (e.target.closest('a') && abrir.getAttribute('aria-expanded') === 'true') alternar(false); });
+    gaveta.addEventListener('click', function (e) { if (e.target.closest('a') && abrir.getAttribute('aria-expanded') === 'true') alternar(false); });
     addEventListener('keydown', function (e) { if (e.key === 'Escape' && abrir.getAttribute('aria-expanded') === 'true') { alternar(false); abrir.focus(); } });
-    matchMedia('(min-width: 1024px)').addEventListener('change', function (m) { if (m.matches) alternar(false); });
+    matchMedia('(min-width: 1100px)').addEventListener('change', function (m) { if (m.matches) alternar(false); });
   }
 
-  /* progresso, barra colada (mostra o logo pequeno) e botão fixo */
+  /* barra de progresso */
   var prog = document.querySelectorAll('[data-prog]');
-  var fixo = document.querySelector('.fixo');
-  var topo = document.querySelector('.topo');
   function aoRolar() {
     var t = Math.max(1, doc.scrollHeight - innerHeight);
     var p = Math.min(1, scrollY / t).toFixed(4);
     prog.forEach(function (el) { el.style.setProperty('--p', p); });
-    if (barra && topo) barra.classList.toggle('colada', scrollY > topo.offsetHeight - 4);
-    if (fixo) fixo.classList.toggle('vis', scrollY > innerHeight * .7 && scrollY < t - 200);
   }
   addEventListener('scroll', aoRolar, { passive: true });
   aoRolar();

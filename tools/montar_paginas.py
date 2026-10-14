@@ -1,8 +1,8 @@
-"""Monta as páginas da raiz a partir de tools/paginas/*.html (logo centralizado, barra de menu e rodapé comuns).
+"""Monta as páginas da raiz a partir de tools/paginas/*.html (cabeçalho, rodapé e lightbox comuns).
 Troque V para furar o cache de CSS/JS.
 Marcadores nas páginas: <!--seta-->, <!--brilho--> e <!--zap-->."""
 import os, re, glob
-V = '1'
+V = '2'
 AQUI = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(AQUI)
 BASE = 'https://azeugral.github.io/andreia-caverna/'  # CONFIRMAR: trocar quando houver domínio
@@ -20,42 +20,39 @@ HEAD = '''<!doctype html>
 <title>{titulo}</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0d0c0b">
+<meta name="theme-color" content="#faf6f0">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{titulo}">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{base}og-caverna.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Logo Caverna Hair e Makeup, em dourado sobre preto">
+<meta property="og:image:alt" content="Logo Caverna Hair e Makeup entre a foto da Andréia e a de um loiro">
 <meta property="og:locale" content="pt_BR">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/icone-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="assets/css/site.css?v={v}">
 </head>
 <body class="{corpo}">
 <a class="sr" href="#conteudo">Pular para o conteúdo</a>
 <div class="progresso" data-prog aria-hidden="true"><i></i></div>
-<header class="topo">
-  <a class="topo-logo" href="./" aria-label="Caverna Hair e Makeup, início"><img src="assets/img/logo-caverna-360.webp" srcset="assets/img/logo-caverna-360.webp 360w, assets/img/logo-caverna-720.webp 720w" sizes="(min-width:900px) 300px, 220px" alt="Caverna Hair e Makeup" width="720" height="417"></a>
+<header class="nav">
+  <a class="nav-logo" href="./" aria-label="Caverna Hair e Makeup, início"><img src="assets/img/logo-h-240.webp" srcset="assets/img/logo-h-240.webp 240w, assets/img/logo-h-480.webp 480w" sizes="(min-width:1100px) 210px, 168px" alt="Caverna Hair e Makeup" width="480" height="122"></a>
+  <a class="btn peq nav-cta" href="agendar.html"><span>Agendar</span></a>
+  <button class="nav-abrir" type="button" aria-expanded="false" aria-controls="menu"><span>Menu</span><i aria-hidden="true"></i></button>
+  <nav class="nav-menu" id="menu" aria-label="Principal"><ul class="menu">{menu}</ul><a class="btn" href="agendar.html"><span>Agendar horário</span><i>{brilho}</i></a></nav>
 </header>
-<nav class="barra" aria-label="Principal">
-  <a class="barra-marca" href="./" aria-label="Caverna Hair e Makeup, início"><img src="assets/img/logo-caverna-360.webp" alt="" width="360" height="208"></a>
-  <button class="barra-abrir" type="button" aria-expanded="false" aria-controls="menu"><span>Menu</span><i aria-hidden="true"></i></button>
-  <ul class="menu" id="menu">{menu}</ul>
-  <a class="btn peq barra-cta" href="agendar.html"><span>Agendar</span><i>{brilho}</i></a>
-</nav>
 <main id="conteudo">
 '''
 
 FOOT = '''</main>
 <footer class="rodape">
   <div class="wrap">
-    <a class="rodape-logo" href="./" aria-label="Caverna Hair e Makeup, início"><img src="assets/img/logo-caverna-360.webp" srcset="assets/img/logo-caverna-360.webp 360w, assets/img/logo-caverna-720.webp 720w" sizes="260px" alt="Caverna Hair e Makeup" width="720" height="417" loading="lazy"></a>
+    <a class="rodape-logo" href="./" aria-label="Caverna Hair e Makeup, início"><img src="assets/img/logo-ouro-360.webp" srcset="assets/img/logo-ouro-360.webp 360w, assets/img/logo-ouro-720.webp 720w" sizes="240px" alt="Caverna Hair e Makeup" width="720" height="417" loading="lazy"></a>
     <p class="rodape-frase">Andréia Oliveira · cabeleireira e maquiadora</p>
     <div class="colunas">
       <div><h4>Páginas</h4><ul><li><a href="./">Início</a></li><li><a href="./#servicos">Serviços</a></li><li><a href="trabalhos.html">Trabalhos</a></li><li><a href="agendar.html">Agendar</a></li></ul></div>
@@ -65,7 +62,6 @@ FOOT = '''</main>
     <div class="base"><span>© <span data-ano>2026</span> Caverna Hair e Makeup. Todos os direitos reservados.</span><span>Site por <a href="https://lrgz.com.br" target="_blank" rel="noopener">L R G Z</a></span></div>
   </div>
 </footer>
-<a class="fixo" href="agendar.html" aria-label="Agendar horário">{brilho}<span>Agendar</span></a>
 {extra}<script src="assets/js/obras.js?v={v}"></script>
 <script src="assets/js/site.js?v={v}"></script>
 </body>
@@ -94,7 +90,5 @@ for f in glob.glob(os.path.join(AQUI, 'paginas', '*.html')):
         FOOT.format(v=V, zap=ZAP, brilho=BRILHO, extra=LB if meta.get('lightbox') == 'sim' else '')
     if nome == '404.html':
         html = html.replace('<head>', '<head>\n<base href="/andreia-caverna/">', 1)
-    if nome == 'agendar.html':
-        html = html.replace('<a class="fixo"', '<a hidden class="fixo"', 1)
     open(os.path.join(SITE, nome), 'w', encoding='utf-8', newline='\n').write(html)
     print('ok', nome)
